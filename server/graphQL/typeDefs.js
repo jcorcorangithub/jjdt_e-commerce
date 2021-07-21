@@ -1,9 +1,11 @@
 const { gql } = require('apollo-server-express');
 
-// case sensitivity ????? /////////
+// case sensitivity  
+// what needs to match with resolvers
 
 const typeDefs = gql`
     type Account {
+        //maybe an id////////
         name: String
         userName: String
         password: String
@@ -11,8 +13,8 @@ const typeDefs = gql`
 
     type Item {
         name: String
-        keywords: String
         description: String
+        price: Decimal128
     }
 
     type Auth {
@@ -21,6 +23,8 @@ const typeDefs = gql`
 
     type Query {
         accounts: [Account]
+////// why does the type need to be specified when it is determined in the model creation
         account(userName: String): Account
+
     }
 `;

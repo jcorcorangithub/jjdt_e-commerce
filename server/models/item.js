@@ -1,3 +1,4 @@
+const { Decimal128 } = require('bson');
 const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema({
@@ -15,12 +16,11 @@ const itemSchema = new Schema({
         required: true,
     },
     price: {
-        type: 
+        type: Decimal128,
+        required: true,
     }
-    // more item info
-    // ie: id 
 });
 
-const ItemSchema = model('ItemSchema', itemSchema)
+const ItemSchema = model('ItemSchema', itemSchema);
 
 module.exports = ItemSchema;
