@@ -11,6 +11,13 @@ const resolvers = {
         account: async (parent, {userName} ) => {
             return account.findOne({ userName });
         },
+
+        me: async (parent, args, context) => {
+            if (context.user) {
+                return account.findOne({ userName: context.user.userName });
+            }
+            throw new AuthenticationError('you need to be logged in');
+        },
     },
 
     //Mutations: {},

@@ -25,6 +25,7 @@ const typeDefs = gql`
         accounts: [Account]
 ////// why does the type need to be specified when it is determined in the model creation
         account(userName: String): Account
+        me: Account
 
     }
 `;
