@@ -5,6 +5,11 @@ const itemSchema = new Schema({
     id: {
         //
     },
+    sku: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     name: {
         type: String,
         required: true,

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { account } = require('../models');
+const { account, item } = require('../models');
 const { signToken } = require('../utils/auth'); // need to make utils folder with auth file
 
 const resolvers = {
@@ -17,6 +17,14 @@ const resolvers = {
                 return account.findOne({ userName: context.user.userName });
             }
             throw new AuthenticationError('you need to be logged in');
+        },
+
+        items: async () => {
+            return item.find();
+        },
+
+        item: async (parent, {sku}) => {
+            return item.findOne({ sku });
         },
     },
 
