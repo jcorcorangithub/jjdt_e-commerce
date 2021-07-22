@@ -1,10 +1,6 @@
-const { Decimal128 } = require('bson');
 const { Schema, model } = require('mongoose');
 
 const itemSchema = new Schema({
-    id: {
-        //
-    },
     sku: {
         type: Number,
         required: true,
@@ -21,7 +17,7 @@ const itemSchema = new Schema({
         required: true,
     },
     price: {
-        type: Decimal128,
+        type: Number,
         required: true,
     }
 });
