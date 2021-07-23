@@ -92,7 +92,7 @@ const productSchema = new Schema({
 
 
 
-const ProductSchema = model(`ProductSchema`, productSchema);
+const ProductSchema = model(`Product`, productSchema);
 
 module.exports = ProductSchema;
 

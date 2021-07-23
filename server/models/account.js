@@ -8,7 +8,7 @@ const accountSchema = new Schema({
       unique: true,
       trim: true,
   },
-  userName: {
+  username: {
       type: String,
       required: true,
       unique: true,
@@ -35,6 +35,6 @@ accountSchema.pre('save', async function (next) {
     return bcrypt.compare(password, this.password);
   };
 
-const AccountSchema = model('AccountSchema', accountSchema)
+const AccountSchema = model('Account', accountSchema)
 
 module.exports = AccountSchema;
