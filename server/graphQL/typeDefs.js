@@ -10,7 +10,7 @@ const typeDefs = gql`
         password: String
     }
 
-    type Item {
+    type Product {
         sku: Int
         name: String
         description: String
@@ -22,8 +22,8 @@ const typeDefs = gql`
         account(userName: String): Account
         me: Account
 
-        items: [Item]
-        item(sku: Int): Item
+        products: [Product]
+        product(sku: Int): Product
 
     }
 `;
