@@ -8,16 +8,18 @@ const resolvers = {
             return account.find();
         },
                 // do i need the parent argument/parameter
-        account: async (parent, {userName} ) => {
-            return account.findOne({ userName });
+        account: async (parent, {username} ) => {
+            return account.findOne({ username });
         },
 
         me: async (parent, args, context) => {
             if (context.user) {
-                return account.findOne({ userName: context.user.userName });
+                return account.findOne({ username: context.user.username });
             }
             throw new AuthenticationError('you need to be logged in');
         },
+
+        ////////////
 
         products: async () => {
             return product.find();
@@ -26,6 +28,12 @@ const resolvers = {
         product: async (parent, {_id}) => {
             return product.findOne({ _id });
         },
+
+        ////////////
+
+
+
+
     },
 
     //Mutations: {},
