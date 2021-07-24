@@ -23,8 +23,8 @@ const resolvers = {
             return product.find();
         },
 
-        product: async (parent, {sku}) => {
-            return product.findOne({ sku });
+        product: async (parent, {_id}) => {
+            return product.findOne({ _id });
         },
     },
 
