@@ -1,29 +1,33 @@
 const { gql } = require('apollo-server-express');
 
-// case sensitivity  
-// what needs to match with resolvers
-
 const typeDefs = gql`
     type Account {
-        name: String
-        userName: String
+        _id: ID
+        username: String
         password: String
+        email: String
     }
 
     type Product {
-        sku: Int
-        name: String
+        _id: ID
         description: String
-        price: Float
+        name: String
+        ratings: Float
+        images: String
+    }
+
+    type Orders {
+        _id: ID
+
     }
 
     type Query {
         accounts: [Account]
-        account(userName: String): Account
+        account(username: String): Account
         me: Account
 
         products: [Product]
-        product(sku: Int): Product
+        product(_id: ID): Product
 
     }
 `;
