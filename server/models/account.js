@@ -2,23 +2,24 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const accountSchema = new Schema({
-  name: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-  },
   username: {
       type: String,
-      required: true,
+      required: [true, 'Please enter your name'],
       unique: true,
   },
   password: {
       type: String,
-      required: true,
-      minlength: 5,
+      required: [true, 'Please enter your password'],
+      minlength: [6, 'Your password must be longer than 6 characters'],
   },
+  email: {
+    type: String,
+    required: [true, 'Please enter your email'],
+    match: [/.+@.+\..+/, 'Must match an email address!'],
+  },
+  // maybe add orders
 });
+
 
 // set up pre-save middleware to create password
 accountSchema.pre('save', async function (next) {
@@ -35,6 +36,6 @@ accountSchema.pre('save', async function (next) {
     return bcrypt.compare(password, this.password);
   };
 
-const AccountSchema = model('Account', accountSchema)
+const AccountSchema = model('Account', accountSchema);
 
 module.exports = AccountSchema;
