@@ -7,14 +7,12 @@ const orderSchema = new Schema({
         default: Date.now
     },
 
-//what exactly is going on here ///////
     products: [
         {
         type: Schema.Types.ObjectId,
-        ref: 'Product' 
+        ref: 'product' 
         }
     ],
-//what exactly is going on here ///////
 
     shippingInfo: {
         address: {
@@ -37,3 +35,7 @@ const orderSchema = new Schema({
 
     //orderPrice: {},
 });
+
+const OrderSchema = model('order', orderSchema);
+
+module.exports = OrderSchema;
