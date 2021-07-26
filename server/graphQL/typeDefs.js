@@ -12,13 +12,11 @@ const typeDefs = gql`
         _id: ID
         description: String
         name: String
-        ratings: Float
-        images: String
+        category: String
     }
 
     type Orders {
         _id: ID
-
     }
 
     type Query {
@@ -28,6 +26,7 @@ const typeDefs = gql`
 
         products: [Product]
         product(_id: ID): Product
+        byCategory: [Product]
 
     }
 `;
