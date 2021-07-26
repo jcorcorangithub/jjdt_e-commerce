@@ -26,7 +26,7 @@ const typeDefs = gql`
 
         products: [Product]
         product(_id: ID): Product
-        byCategory: [Product]
+        byCategory(category: String): [Product]
 
     }
 `;
