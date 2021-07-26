@@ -14,7 +14,6 @@ const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(fileUpload());
 
 const server = new ApolloServer({
     typeDefs,
@@ -27,6 +26,16 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(fileUpload());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(`${__dirname}, '../client/public'`)));
+}
+
+app.get('*', (req, res,) => {
+  res.sendFile(path.join(__dirname, '../client/public/index.html'));
+});
+
 app.post('/uploads', (req,res) => {
   // const file = req.files
       if (req.files === null) {
@@ -45,13 +54,6 @@ app.post('/uploads', (req,res) => {
   });
   
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/build')));
-}
-
-app.get('*', (req, res,) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
 
 db.once('open', () => {
   app.listen(PORT, () => {
