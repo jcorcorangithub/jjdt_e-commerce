@@ -21,22 +21,22 @@ const FileUpload = () => {
     console.log(formData)
     await axios.post("/uploads", formData)
     console.log("done")
-    // try {
-    //   const res = await axios.post("/uploads", formData, {
-    //     headers: {
-    //       "Content-Type": "Multipart/form-data",
-    //     },
-    //   });
-    //   const { fileName, filePath } = res.data;
+    try {
+      const res = await axios.post("/uploads", formData, {
+        headers: {
+          "Content-Type": "Multipart/form-data",
+        },
+      });
+      const { fileName, filePath } = res.data;
 
-    //   setUploadedFile({ fileName, filePath });
-    // } catch (err) {
-    //   if (err.response.status === 500) {
-    //     console.log("There was a problem");
-    //   } else {
-    //     console.log(err.response.data.msg);
-    //   }
-    // }
+      setUploadedFile({ fileName, filePath });
+    } catch (err) {
+      if (err.response.status === 500) {
+        console.log("There was a problem");
+      } else {
+        console.log(err.response.data.msg);
+      }
+    }
   };
   return (
     <Fragment>
