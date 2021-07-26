@@ -1,4 +1,4 @@
-import { Description } from "@material-ui/icons";
+
 
 const products = [
     {
