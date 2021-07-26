@@ -29,8 +29,8 @@ const resolvers = {
             return product.findOne({ _id });
         },
 
-        byCategory: async (parent, category ) => {
-            return product.find(product.category);
+        byCategory: async (parent, {category} ) => {
+            return product.find({ category });
         },
 
         ////////////
