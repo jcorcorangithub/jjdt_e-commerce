@@ -18,7 +18,7 @@ const accountSchema = new Schema({
     required: [true, 'Please enter your email'],
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
-  order: [orders.Schema]
+  //orders: [orders.Schema]
 });
 
 
