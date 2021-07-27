@@ -7,7 +7,7 @@ const resolvers = {
         accounts: async () => {
             return account.find();
         },
-                // do i need the parent argument/parameter
+
         account: async (parent, {username} ) => {
             return account.findOne({ username });
         },
@@ -34,6 +34,10 @@ const resolvers = {
         },
 
         ////////////
+
+        order: async (parent, { _id }) => {
+            
+        }
 
 
 
