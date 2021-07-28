@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const axios = require("axios");
 
-const { typeDefs, resolvers } = require("./graphql");
+const { typeDefs, resolvers } = require("./graphqls");
 //const { authMiddleware } = require('./utils/auth');
 const db = require("./config/connection");
 
