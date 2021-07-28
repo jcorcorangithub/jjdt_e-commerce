@@ -7,7 +7,7 @@ const resolvers = {
         accounts: async () => {
             return account.find();
         },
-                // do i need the parent argument/parameter
+
         account: async (parent, {username} ) => {
             return account.findOne({ username });
         },
@@ -34,6 +34,19 @@ const resolvers = {
         },
 
         ////////////
+
+        order: async (parent, { _id }, context) => {
+            if (context.user) {
+              const user = await User.findById(context.user._id).populate({
+                path: 'orders.products',
+                populate: 'category'
+              });
+      
+              return user.orders.id(_id);
+            }
+      
+            throw new AuthenticationError('Not logged in');
+          },
 
 
 

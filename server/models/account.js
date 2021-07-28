@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const orders = require('./orders');
 const bcrypt = require('bcrypt');
 
 const accountSchema = new Schema({
@@ -17,7 +18,7 @@ const accountSchema = new Schema({
     required: [true, 'Please enter your email'],
     match: [/.+@.+\..+/, 'Must match an email address!'],
   },
-  // maybe add orders
+  //orders: [orders.Schema]
 });
 
 
