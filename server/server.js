@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(fileUpload());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(`${__dirname}, '../client/build'`)));
+  app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
 app.get("*", (req, res) => {
@@ -38,7 +38,7 @@ app.post("/uploads", (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: "No file uploaded" });
   }
-  
+
   const file = req.files.file;
 
   file.mv(`${__dirname}/uploads/${file.name}`, (err) => {
