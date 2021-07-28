@@ -1,22 +1,22 @@
 [
     {
-        "name": "James Corcoran",
         "username": "jpc21",
-        "password": "password01"
+        "password": "password01",
+        "email": ""
     },
     {
-        "name": "Jung Nam",
         "username": "jung21",
-        "password": "password02"
+        "password": "password02",
+        "email": ""
     },
     {
-        "name": "Tyra",
         "username": "tyra21",
-        "password": "password03"
+        "password": "password03",
+        "email": ""
     },
     {
-        "name": "Daisha",
         "username": "daisha21",
-        "password": "password04"
+        "password": "password04",
+        "email": ""
     }
 ]
