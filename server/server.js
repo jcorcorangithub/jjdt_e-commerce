@@ -20,6 +20,7 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload());

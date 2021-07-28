@@ -14,6 +14,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+
 
 
 function Copyright() {
@@ -52,15 +56,40 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
   const [showSignUp, setSignUp] = useState(false);
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login] = useMutation(LOGIN);
+
+
 
   function showSignUpHandler(e){
     e.preventDefault();
     setSignUp(true);
   }
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
+      });
+      const token = mutationResponse.data.login.token;
+      Auth.login(token);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   
   return (
     <>
+  
     {showSignUp ? <SignUp onClick={showSignUpHandler}/>:
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -71,17 +100,19 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form  onSubmit={handleFormSubmit} className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
             required
             fullWidth
+            value={formState.email}
             id="email"
             label="Email Address"
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
           />
           <TextField
             variant="outlined"
@@ -89,10 +120,12 @@ export default function SignIn() {
             required
             fullWidth
             name="password"
+            value={formState.password}
             label="Password"
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChange}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -123,6 +156,7 @@ export default function SignIn() {
       </Box>
     </Container>
   }
+
   </>
   );
   
