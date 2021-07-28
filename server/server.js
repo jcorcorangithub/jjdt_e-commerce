@@ -20,7 +20,6 @@ const server = new ApolloServer({
 });
 
 server.applyMiddleware({ app });
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload());
@@ -38,7 +37,7 @@ app.post("/uploads", (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: "No file uploaded" });
   }
-
+  
   const file = req.files.file;
 
   file.mv(`${__dirname}/uploads/${file.name}`, (err) => {
