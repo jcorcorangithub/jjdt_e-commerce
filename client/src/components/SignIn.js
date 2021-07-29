@@ -17,6 +17,7 @@ import Container from '@material-ui/core/Container';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 function Copyright() {
   return (
@@ -54,13 +55,16 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
   const [showSignUp, setSignUp] = useState(false);
+  const [error, setError] = React.useState(false);
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login] = useMutation(LOGIN_USER);
+  const [helperText, setHelperText] = React.useState('Input User Information');
 
 
 
   function showSignUpHandler(e){
     e.preventDefault();
+    setHelperText(' ');
     setSignUp(true);
   }
   const handleFormSubmit = async (event) => {
@@ -73,7 +77,8 @@ export default function SignIn() {
       Auth.login(token);
     } catch (e) {
       console.log(e);
-      alert('wrong password')
+      setHelperText('Incorrect email/password');
+      setError(true);
     }
   };
 
@@ -83,6 +88,7 @@ export default function SignIn() {
       ...formState,
       [name]: value,
     });
+    setError(false);
   };
 
   
@@ -130,6 +136,7 @@ export default function SignIn() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+    <FormHelperText>{helperText}</FormHelperText>
           <Button
             type="submit"
             fullWidth
@@ -142,10 +149,12 @@ export default function SignIn() {
           <Grid container>
             <Grid item xs>
             </Grid>
+
             <Grid item>
               <Button  onClick={showSignUpHandler}type="submit"fullWidth variant="contained" color="primary">
                 {"Don't have an account? Sign Up"}
               </Button>
+
             </Grid>
           </Grid>
         </form>
