@@ -73,6 +73,7 @@ export default function SignIn() {
       Auth.login(token);
     } catch (e) {
       console.log(e);
+      alert('wrong password')
     }
   };
 
