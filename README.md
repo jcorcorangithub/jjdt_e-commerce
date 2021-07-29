@@ -43,7 +43,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 [View the full license](./LICENSE)
 
 ## Contributors
-- Jung Nam GitHub: [@rhandschuh](https://github.com/rhandschuh)
+- Jung Nam GitHub: [@jung0808](https://github.com/jung0808)
 - James Corcoran GitHub: [@jcorcorangithub](https://github.com/jcorcorangithub)
 - Tyra Ferguson GitHub: [@momo427](https://github.com/momo427)
 - Daisha Marrow GitHub: [@dtm5169](https://github.com/dtm5169)
