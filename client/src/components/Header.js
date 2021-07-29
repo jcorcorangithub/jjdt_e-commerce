@@ -1,36 +1,51 @@
-import React from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import React from "react";
+import Auth from "../utils/auth";
+import { Link } from "react-router-dom";
 
 const Header = () => {
-    return (
+    if (Auth.loggedIn()) {
+      return (
         <header>
-           <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
-             <Container>
-               <LinkContainer to='/'>
-                <Navbar.Brand>JJDT</Navbar.Brand>
-               </LinkContainer>
-               
-               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-               <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="m-auto">
-                    <LinkContainer to='/cart'>
-                    <Nav.Link >Cart<i className='fas fa-shopping-cart'></i></Nav.Link>
-                    </LinkContainer>
-
-                    <LinkContainer to='/signin'>
-                    <Nav.Link >Sign In<i className='fas fa-user'></i></Nav.Link> 
-                    </LinkContainer>
-
-                    <LinkContainer to='/profile'>
-                    <Nav.Link >Profile<i className='fas fa-user'></i></Nav.Link> 
-                    </LinkContainer>
-                  </Nav>
-                </Navbar.Collapse>
-               </Container>
-              </Navbar>
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to='/cart'>
+              Order 
+            </Link>
+          </li>
+          <li className="mx-1">
+            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+            <a href="/" onClick={() => Auth.logout()}>
+              Logout
+            </a>
+          </li>
+          <li className="mx-1">
+            <Link to="/profile">
+              Profile
+            </Link>
+          </li>
+        </ul>
         </header>
-    )
-}
+      );
+    } else {
+      return (
+        <header>
+        <ul className="flex-row">
+          <li className="mx-1">
+            <Link to="/signup">
+              Signup
+            </Link>
+          </li>
+          <li className="mx-1">
+            <Link to="/signin">
+              Login
+            </Link>
+          </li>
+        </ul>
+        </header>
+      );
+    }
+  }
+
+
 
 export default Header
