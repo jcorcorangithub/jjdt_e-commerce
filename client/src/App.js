@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomeScreen from './screens/HomeScreen'
 import ProductPage from "./screens/ProductPage";
-import Cart from "./screens/Cart";
+import CartScreen from "./screens/CartScreen";
 import SignIn from './components/SignIn';
 import Profile from './components/Profile';
 import SignUp from './components/SignUp';
@@ -49,7 +49,7 @@ const App = () => {
         <Container>
             <Route path='/' component={HomeScreen} exact/>
             <Route path='/product/:id' component={ProductPage}/>
-            <Route path='/Cart/:id?' component={Cart}/>
+            <Route path='/Cart/:id?' component={CartScreen}/>
             <Route path='/profile' component={Profile} />
             <Route path='/signin' component={SignIn}/>
             <Route path='/signup' component={SignUp}/>
