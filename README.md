@@ -45,8 +45,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 ## Contributors
 - Jung Nam GitHub: [@rhandschuh](https://github.com/rhandschuh)
 - James Corcoran GitHub: [@jcorcorangithub](https://github.com/jcorcorangithub)
-- Stephen Roddewig GitHub: [@Captain63](https://github.com/Captain63)
-- Brandon Ford GitHub: [@brandonfordd](https://github.com/brandonfordd)
+- Tyra Ferguson GitHub: [@momo427](https://github.com/momo427)
+- Daisha Marrow GitHub: [@dtm5169](https://github.com/dtm5169)
 
 
 ## Questions
