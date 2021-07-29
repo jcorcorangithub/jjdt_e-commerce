@@ -28,7 +28,7 @@ const Header = () => {
       );
     } else {
       return (
-        <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
+        <header className="bg-info text-dark mb-4 py-3 align-center">
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">
