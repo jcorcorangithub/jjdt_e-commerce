@@ -7,7 +7,7 @@ const fs = require("fs");
 const axios = require("axios");
 
 const { typeDefs, resolvers } = require("./graphqls");
-//const { authMiddleware } = require('./utils/auth');
+const { authMiddleware } = require('./utils/auth');
 const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
@@ -16,7 +16,7 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  //context: authMiddleware,
+  context: authMiddleware,
 });
 
 server.applyMiddleware({ app });
@@ -26,11 +26,11 @@ app.use(express.json());
 app.use(fileUpload());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  app.use(express.static(path.join(__dirname, '../client/public')));
 }
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/public/index.html"));
 });
 
 app.post("/uploads", (req, res) => {

@@ -1,20 +1,13 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { account, product } = require('../models');
+const { Profile, product } = require('../models');
 const { signToken } = require('../utils/auth'); // need to make utils folder with auth file
 
 const resolvers = {
     Query: {
-        accounts: async () => {
-            return account.find();
-        },
 
-        account: async (parent, {username} ) => {
-            return account.findOne({ username });
-        },
-
-        me: async (parent, args, context) => {
+       me: async (parent, args, context) => {
             if (context.user) {
-                return account.findOne({ username: context.user.username });
+                return Profile.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('you need to be logged in');
         },
@@ -54,6 +47,35 @@ const resolvers = {
     },
 
     //Mutations: {},
+    Mutation: {
+        addProfile: async (parent,{ firstName,lastName, email, password }) => {
+            console.log({ firstName,lastName, email, password })
+          const profile = await Profile.create({ firstName,lastName, email, password });
+          const token = signToken(profile);
+    
+          return { token, profile };
+        },
+        login: async (parent, { email, password }) => {
+          console.log("got in ");
+          const profile = await Profile.findOne({ email });
+          console.log(profile);
+          if (!profile) {
+            throw new AuthenticationError('No profile with this email found!');
+          }
+          
+          const correctPw = await profile.isCorrectPassword(password);
+          console.log(correctPw);
+    
+          if (!correctPw) {
+            throw new AuthenticationError('Incorrect password!');
+          }
+    
+          const token = signToken(profile);
+          console.log(token);
+          return { token, profile };
+        }
+
+    }
 };
 
 module.exports = resolvers;
