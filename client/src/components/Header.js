@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
     if (Auth.loggedIn()) {
       return (
-        <header>
+        <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
         <ul className="flex-row">
           <li className="mx-1">
             <Link to='/cart'>
@@ -28,7 +28,7 @@ const Header = () => {
       );
     } else {
       return (
-        <header>
+        <header className="bg-info text-dark mb-4 py-3 display-flex align-center">
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">

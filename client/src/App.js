@@ -8,6 +8,7 @@ import ProductPage from "./screens/ProductPage";
 import Cart from "./screens/Cart";
 import SignIn from './components/SignIn';
 import Profile from './components/Profile';
+import SignUp from './components/SignUp';
 import {
   ApolloClient,
   InMemoryCache,
@@ -51,6 +52,7 @@ const App = () => {
             <Route path='/Cart/:id?' component={Cart}/>
             <Route path='/profile' component={Profile} />
             <Route path='/signin' component={SignIn}/>
+            <Route path='/signup' component={SignUp}/>
 
         </Container>
   
