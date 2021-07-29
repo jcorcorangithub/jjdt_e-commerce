@@ -54,18 +54,8 @@ export const QUERY_PROFILES = gql`
       _id
       firstName
       lastName
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
+      email
+      password
     }
   }
 `;
@@ -75,19 +65,9 @@ export const QUERY_SINGLE_PROFILE = gql`
     profile(profileId: $profileId) {
       _id
       firstName
-      lastNAme
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
+      lastName
+      email 
+      password
     }
   }
 `;
@@ -98,6 +78,8 @@ export const QUERY_ME = gql`
       _id
       firstName
       lastName
+      email
+      password
     }
   }
 `;
