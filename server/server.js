@@ -5,6 +5,7 @@ const path = require("path");
 const fileUpload = require("express-fileupload");
 const fs = require("fs");
 const axios = require("axios");
+const cors = require('cors');
 
 const { typeDefs, resolvers } = require("./graphqls");
 const { authMiddleware } = require('./utils/auth');
@@ -21,6 +22,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({ app });
 
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(fileUpload());

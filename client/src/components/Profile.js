@@ -62,13 +62,6 @@ function Profile() {
   }
 
   if (!profile?.name) {
-    return (
-      <h4>
-        You need to be logged in to see your profile page. Use the navigation
-        links above to sign up or log in!
-      </h4>
-    );
-  }
   return (
     <div>
 
@@ -76,7 +69,7 @@ function Profile() {
           <div className={classes.paper}>
             <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
             <Typography varient="h2"> JJDT</Typography>
-            <Typography varient="h6"></Typography>
+            <Typography varient="h6">{profile.firstName}</Typography>
           </div>
           <div className={classes.paper}>
             <div className={classes.paper}>
@@ -93,7 +86,9 @@ function Profile() {
           </div>
         </Grid>
     </div>
+      
   );
+}
 }
 
 export default Profile;

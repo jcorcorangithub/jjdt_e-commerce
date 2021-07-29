@@ -28,31 +28,23 @@ const useStyles = makeStyles((theme) => ({
 export default function InputAdornments() {
   const classes = useStyles();
   const [values, setValues] = React.useState({
-    amount: '',
-    password: '',
-    weight: '',
-    weightRange: '',
-    showPassword: false,
+    name: '',
+    stock: '',
+    category: '',
+    amount: ''
   });
+
+  
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
   };
-
-  // const handleClickShowPassword = () => {
-  //   setValues({ ...values, showPassword: !values.showPassword });
-  // };
-
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
 
   return (
     <div className={classes.root}>
       <div>
 
         <TextField
-          label="With normal TextField"
           id="outlined-start-adornment"
           className={clsx(classes.margin, classes.textField)}
           InputProps={{
@@ -63,22 +55,17 @@ export default function InputAdornments() {
         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
           <OutlinedInput
             id="outlined-adornment-weight"
-            value={values.weight}
-            onChange={handleChange('weight')}
+            value={values.stock}
+            onChange={handleChange('stock')}
             endAdornment={<InputAdornment position="end">Stock</InputAdornment>}
-            aria-describedby="outlined-weight-helper-text"
-            inputProps={{
-              'aria-label': 'weight',
-            }}
-            labelWidth={0}
+            labelWidth={60}
           />
           <FormHelperText id="outlined-weight-helper-text"></FormHelperText>
         </FormControl>
         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
           <OutlinedInput
             id="outlined-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.password}
+            value={values.category}
             onChange={handleChange('category')}
             endAdornment={<InputAdornment position="end">category</InputAdornment>}
           />
