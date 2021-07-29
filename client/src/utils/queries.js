@@ -48,10 +48,12 @@ export const QUERY_CATEGORIES = gql`
   }
 `;
 
-export const QUERY_USER = gql`
-  {
-    account {
-        username
+export const QUERY_PROFILES = gql`
+  query allProfiles {
+    profiles {
+      _id
+      firstName
+      lastName
       orders {
         _id
         purchaseDate
@@ -67,22 +69,25 @@ export const QUERY_USER = gql`
     }
   }
 `;
-export const QUERY_PROFILES = gql`
-  query allProfiles {
-    profiles {
-      _id
-      name
-      skills
-    }
-  }
-`;
 
 export const QUERY_SINGLE_PROFILE = gql`
   query singleProfile($profileId: ID!) {
     profile(profileId: $profileId) {
       _id
-      name
-      skills
+      firstName
+      lastNAme
+      orders {
+        _id
+        purchaseDate
+        products {
+          _id
+          name
+          description
+          price
+          quantity
+          image
+        }
+      }
     }
   }
 `;
@@ -91,8 +96,8 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
-      name
-      skills
+      firstName
+      lastName
     }
   }
 `;

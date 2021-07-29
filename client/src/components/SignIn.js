@@ -14,11 +14,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { LOGIN } from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
-
-
 
 function Copyright() {
   return (
@@ -57,7 +55,7 @@ export default function SignIn() {
   const classes = useStyles();
   const [showSignUp, setSignUp] = useState(false);
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login] = useMutation(LOGIN);
+  const [login] = useMutation(LOGIN_USER);
 
 
 
