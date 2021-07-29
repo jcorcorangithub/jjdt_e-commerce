@@ -4,13 +4,22 @@ const { signToken } = require('../utils/auth'); // need to make utils folder wit
 
 const resolvers = {
     Query: {
-
-       me: async (parent, args, context) => {
-            if (context.user) {
-                return Profile.findOne({ _id: context.user._id });
-            }
-            throw new AuthenticationError('you need to be logged in');
+ 
+        profiles: async () => {
+          return Profile.find();
         },
+    
+        profile: async (parent, { profileId }) => {
+          return Profile.findOne({ _id: profileId });
+        },
+        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+        me: async (parent, args, context) => {
+          if (context.user) {
+            return Profile.findOne({ _id: context.user._id });
+          }
+          throw new AuthenticationError('You need to be logged in!');
+        },
+
 
         ////////////
 
