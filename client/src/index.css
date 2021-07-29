@@ -9,3 +9,11 @@ main {
 Nav.Link {
     
 }
+
+h1 {
+   padding: 1rem 0;
+}
+
+h2 {
+    padding: 0.5rem 0;
+ }
