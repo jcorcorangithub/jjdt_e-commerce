@@ -13,10 +13,11 @@
 Full-stack application following MERN paradigm for creating an account and buying and/or selling through the account. 
 
 ### Languages Used
-- JavaScript (Node.js)
 - MongoDB
-- HTML (handlebars.js)
-- CSS
+- GraphQL
+- Express
+- React
+- NodeJS
 
 ### Node Libraries Used
 - [MongoDB](https://www.npmjs.com/package/mongodb)
@@ -34,7 +35,7 @@ View the app deployment on Heroku: https://boiling-citadel-00807.herokuapp.com/
 ## Installation
 To run this application on your local machine, Node.js is _required_. Once Node.js is installed, clone the repository to your local development environment:
 
-git clone https://github.com/jcorcorangithub/jjdt_e-commerce.git
+git clone https://github.com/jcorcorangithub/jjdt_e-commerce
 
 
 ## License
