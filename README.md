@@ -34,7 +34,7 @@ View the app deployment on Heroku: https://boiling-citadel-00807.herokuapp.com/
 ## Installation
 To run this application on your local machine, Node.js is _required_. Once Node.js is installed, clone the repository to your local development environment:
 
-git clone https://github.com/Captain63/patient-records-tracker.git
+git clone https://github.com/jcorcorangithub/jjdt_e-commerce.git
 
 
 ## License
